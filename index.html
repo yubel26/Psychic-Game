@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Psychic Game</title>
+</head>
+
+<body>
+<h1>Click Any Button To Begin</h1>
+<div id="psgame"></div>
+    <script>
+          
+        var win = 0;
+        var losses = 0;
+        var guesses = 9;
+        var guessesLeft = 9;
+        var guessesSoFar = [];
+        var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+        document.onkeyup = function (event) {
+            
+            var usersGuess = event.key;
+            var computerguess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+            guessesSoFar.push(usersGuess);
+            for (var i=0; i<computerChoices.length; i++){
+
+            }
+            if (usersGuess == computerguess){
+                win++;
+                guesses = 9
+                guessesSoFar.length = 0;
+            }
+                
+         else if (guessesLeft == 0) {
+            losses++;
+            guesses = 9
+            guessesSoFar.length = 0;
+
+        }
+         else if (usersGuess !== computerguess) {
+            guessesLeft--;
+        }
+        document.getElementById("psgame").innerHTML =  
+            
+            "<p>Total Wins: " +
+            win +
+            "</p>" +
+            "<p>Total Losses: " +
+            losses +
+            "</p>" +
+            "<p>Guesses Left: " +
+            guessesLeft +
+            "</p>" +
+            "<p>Your Guesses so far: " +
+            guessesSoFar +
+            "</p>" ;
+    }
+ 
+
+    </script>
+    
+</body>
+
+</html>
